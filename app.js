@@ -14,6 +14,7 @@ dotenv.config({ path: './config/config.env' })
 //passport config
 require('./config/passport')(passport)
 
+//conect DB
 connectDB()
 
 const app = express()
@@ -32,7 +33,7 @@ app.use(methodOverride(function (req, res) {
   }
 }))
 
-//logging
+//running mode
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
@@ -58,7 +59,7 @@ app.use(function (req,res,next){
 //routes
 app.use('/', require('./routes/index'))
 
- 
+//PORT
 const PORT = process.env.PORT || 3000 
 
 app.listen(
